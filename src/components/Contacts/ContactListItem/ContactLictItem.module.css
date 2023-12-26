@@ -1,0 +1,23 @@
+.contactItem {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.contactButton {
+  height: 20px;
+  border: 1px solid #b9b9b9f7;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+
+  font-size: 12px;
+  font-weight: 400;
+  color: #555555;
+}
+
+.contactButton:hover {
+  background-color: #1977bb;
+  color: white;
+}
