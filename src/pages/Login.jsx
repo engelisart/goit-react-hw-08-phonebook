@@ -1,7 +1,11 @@
 import { useState } from 'react';
-import { Helmet } from 'react-helmet';
+
 import { useDispatch } from 'react-redux';
-import { logIn } from 'store/auth/thunks';
+import { logInThunk } from 'store/auth/thunks';
+
+import css from '../components/pages.css/Login.module.css';
+import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -14,12 +18,14 @@ const Login = () => {
   const handleLogIn = event => {
     event.preventDefault();
     const { email, password } = data;
-    dispatch(
-      logIn({
-        email,
-        password,
+    dispatch(logInThunk({ email, password }))
+      .unwrap()
+      .then(data => {
+        toast.success(`Welcome ${data.user.name}!`);
       })
-    );
+      .catch(() => {
+        toast.error('Something went wrong!!!');
+      });
 
     setData({
       email: '',
@@ -37,27 +43,36 @@ const Login = () => {
         <Helmet>
           <title>Login</title>
         </Helmet>
-
-        <form autoComplete="off" onSubmit={handleLogIn}>
-          <label>
+        <form
+          className={css.formaLogin}
+          autoComplete="off"
+          onSubmit={handleLogIn}
+        >
+          <label className={css.labelLogin}>
             Email
             <input
+              className={css.inputLogin}
               type="email"
               name="email"
+              placeholder="Enter the Email"
               value={data.email}
               onChange={handleChangeLogIn}
             />
           </label>
-          <label>
+          <label className={css.labelLogin}>
             Password
             <input
+              className={css.inputLogin}
               type="password"
               name="password"
+              placeholder="Enter the Password"
               value={data.password}
               onChange={handleChangeLogIn}
             />
           </label>
-          <button type="submit">Log In</button>
+          <button className={css.buttonLogin} type="submit">
+            Log In
+          </button>
         </form>
       </div>
     </>

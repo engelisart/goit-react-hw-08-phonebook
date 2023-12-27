@@ -3,12 +3,20 @@ import { useDispatch } from 'react-redux';
 import { deleteContactThunk } from 'store/contacts/contactsThunk';
 
 import css from './ContactLictItem.module.css';
+import { toast } from 'react-toastify';
 
 export const ContactListItem = ({ contact }) => {
   const dispatch = useDispatch();
 
   const handleDeleteContact = contactId => {
-    dispatch(deleteContactThunk(contactId));
+    dispatch(deleteContactThunk(contactId))
+      .unwrap()
+      .then(data => {
+        toast.warning(`Contact removed!`);
+      })
+      .catch(() => {
+        toast.error('Something went wrong!!!');
+      });
   };
 
   return (

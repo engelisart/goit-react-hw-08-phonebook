@@ -1,7 +1,10 @@
-.contactForm {
+.formaLogin {
   width: 300px;
-  margin-bottom: 20px;
-  padding: 20px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  padding: 30px;
 
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 12px -9px rgba(0, 0, 0, 1);
@@ -11,7 +14,7 @@
   background-color: rgb(255, 247, 220);
 }
 
-.contactLabel {
+.labelLogin {
   margin-bottom: 15px;
 
   font-size: 17px;
@@ -23,7 +26,7 @@
   gap: 5px;
 }
 
-.contactInput {
+.inputLogin {
   height: 25px;
   border: 1px solid rgb(190, 190, 190);
   border-radius: 5px;
@@ -31,20 +34,20 @@
   font-size: 15px;
   font-weight: 200;
   color: rgb(0, 0, 0);
+  outline: none;
 }
 
-.contactInput:hover,
+.inputLogin:hover,
 :focus,
 :focus-visible {
   border: 2px solid #fdc780;
-  outline: none;
   -webkit-box-shadow: 0px 0px 15px -2px rgba(255, 181, 0, 1);
   -moz-box-shadow: 0px 0px 15px -2px rgba(255, 181, 0, 1);
   box-shadow: 0px 0px 15px -2px rgba(255, 181, 0, 1);
 }
 
-.contactButton {
-  width: 100px;
+.buttonLogin {
+  width: 80px;
   height: 25px;
   border: none;
   border-radius: 5px;
@@ -53,12 +56,13 @@
   -moz-box-shadow: 2px 2px 8px -6px rgba(68, 68, 68, 1);
   box-shadow: 2px 2px 8px -6px rgba(68, 68, 68, 1);
 
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 300;
   color: white;
   cursor: pointer;
 }
 
-.contactButton:hover {
+.buttonLogin:hover {
   background-color: rgb(255, 157, 0);
+  color: white;
 }

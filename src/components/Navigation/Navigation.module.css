@@ -1,0 +1,9 @@
+.navLinkHome {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-size: 21px;
+  font-weight: 700;
+  color: rgb(25, 25, 25);
+  font-weight: 300;
+}

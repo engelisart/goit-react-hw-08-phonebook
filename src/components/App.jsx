@@ -3,15 +3,16 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks';
-import { refreshUser } from 'store/auth/thunks';
+import { refreshUserThunk } from 'store/auth/thunks';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
+import { NotFound } from 'pages/NotFound';
+import Loader from './Loader/Loader';
 
 const Home = lazy(() => import('../pages/Home'));
 const Login = lazy(() => import('../pages/Login'));
 const Register = lazy(() => import('../pages/Register'));
 const Contacts = lazy(() => import('../pages/Contacts'));
-const NotFound = lazy(() => import('../pages/NotFound'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -19,11 +20,11 @@ export const App = () => {
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(refreshUserThunk());
   }, [dispatch]);
 
   return isRefreshing ? (
-    'Fetching user data...'
+    <Loader />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>

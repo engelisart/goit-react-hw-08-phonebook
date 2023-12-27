@@ -1,23 +1,30 @@
 .filterContacts {
+  margin-bottom: 15px;
+
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 200;
+
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px;
 }
 .filterInput {
-  width: 150px;
-  height: 20px;
-  border: 1px solid #9f9f9ff7;
+  width: 250px;
+  height: 25px;
+  border: 1px solid rgb(190, 190, 190);
   border-radius: 5px;
+
+  font-size: 15px;
+  font-weight: 200;
+  color: rgb(0, 0, 0);
   outline: none;
 }
 
-.filterInputhover,
+.filterInput:hover,
 :focus,
 :focus-visible {
-  border: 1px solid #0981d6;
-  -webkit-box-shadow: 0px 0px 14px 0px rgba(9, 129, 214, 1);
-  -moz-box-shadow: 0px 0px 14px 0px rgba(9, 129, 214, 1);
-  box-shadow: 0px 0px 14px 0px rgba(9, 129, 214, 1);
+  border: 2px solid #fdc780;
+  -webkit-box-shadow: 0px 0px 15px -2px rgba(255, 181, 0, 1);
+  -moz-box-shadow: 0px 0px 15px -2px rgba(255, 181, 0, 1);
+  box-shadow: 0px 0px 15px -2px rgba(255, 181, 0, 1);
 }

@@ -1,7 +1,11 @@
 import { useState } from 'react';
-import { Helmet } from 'react-helmet';
+
 import { useDispatch } from 'react-redux';
-import { register } from 'store/auth/thunks';
+import { registerThunk } from 'store/auth/thunks';
+
+import css from '../components/pages.css/Register.module.css';
+import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
   const [data, setData] = useState({
@@ -16,12 +20,19 @@ const Register = () => {
     event.preventDefault();
     const { name, email, password } = data;
     dispatch(
-      register({
+      registerThunk({
         name,
         email,
         password,
       })
-    );
+    )
+      .unwrap()
+      .then(data => {
+        toast.success(`Welcome ${data.user.name}!`);
+      })
+      .catch(() => {
+        toast.error('Something went wrong!!!');
+      });
 
     setData({
       name: '',
@@ -38,44 +49,52 @@ const Register = () => {
     <>
       <div>
         <Helmet>
-          <title>Registration</title>
+          <title>Register</title>
         </Helmet>
-
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>
+        <form
+          className={css.formRegister}
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
+          <label className={css.ladelRegister}>
             Name
             <input
+              className={css.inputRegister}
               type="text"
               name="name"
               value={data.name}
               onChange={handleData}
               required
-              placeholder=""
+              placeholder="Enter the Name"
             />
           </label>
-          <label>
+          <label className={css.ladelRegister}>
             Email
             <input
+              className={css.inputRegister}
               type="email"
               name="email"
               value={data.email}
               onChange={handleData}
               required
-              placeholder=""
+              placeholder="Enter the Email"
             />
           </label>
-          <label>
+          <label className={css.ladelRegister}>
             Password
             <input
+              className={css.inputRegister}
               type="password"
               name="password"
               value={data.password}
               onChange={handleData}
               required
-              placeholder=""
+              placeholder="Enter the Password"
             />
           </label>
-          <button type="submit">Register</button>
+          <button className={css.buttonRegister} type="submit">
+            Register
+          </button>
         </form>
       </div>
     </>

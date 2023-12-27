@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectorContacts } from 'store/contacts/contactsSelectors';
 
 import css from './ContactForm.module.css';
+import { toast } from 'react-toastify';
 
 export const ContactForm = props => {
   const [name, setName] = useState('');
@@ -39,10 +40,17 @@ export const ContactForm = props => {
     );
 
     if (copyContact) {
-      alert(`${newContact.name} is already in contacts.`);
+      toast.error(`${newContact.name} is already in contacts.`);
       return;
     }
-    dispatch(addContactThunk(newContact));
+    dispatch(addContactThunk(newContact))
+      .unwrap()
+      .then(data => {
+        toast.success(`Contact added!`);
+      })
+      .catch(() => {
+        toast.error('Contact failed!');
+      });
   };
 
   return (

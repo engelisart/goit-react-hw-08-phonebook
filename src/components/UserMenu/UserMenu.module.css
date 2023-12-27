@@ -1,15 +1,18 @@
-.contactItem {
-  width: 400px;
+.containerUserMenu {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
   gap: 8px;
-  font-size: 15px;
+}
+
+.userName {
+  font-size: 20px;
   font-weight: 300;
   color: rgb(25, 25, 25);
 }
 
-.contactButton {
-  width: 65px;
+.buttonUserMenu {
+  width: 70px;
   height: 25px;
   border: none;
   border-radius: 5px;
@@ -18,13 +21,12 @@
   -moz-box-shadow: 2px 2px 8px -6px rgba(68, 68, 68, 1);
   box-shadow: 2px 2px 8px -6px rgba(68, 68, 68, 1);
 
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 15px;
+  font-weight: 200;
   color: white;
   cursor: pointer;
 }
 
-.contactButton:hover {
+.buttonUserMenu:hover {
   background-color: rgb(255, 157, 0);
-  color: white;
 }
